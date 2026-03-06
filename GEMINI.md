@@ -2,30 +2,30 @@
 
 ## 📍 Last Status (March 6, 2026)
 - **Domain:** `myitdev.com` added to Cloudflare.
-- **Nameservers:** Waiting for propagation (`dimitris` & `lucy`).
+- **Nameservers:** Waiting for propagation.
 - **Web Hosting:** Deployed on **Cloudflare Pages** (`myitdev-web`).
 - **Live URL:** [https://myitdev-web.pages.dev](https://myitdev-web.pages.dev)
-- **Repository:** Cleaned and pushed to GitHub.
+- **Repository:** Cleaned and synced with GitHub.
 
 ## 🛠️ Detailed Next Steps for Tomorrow
 ### Phase 1: Technical Polish
-1. **Check Domain Status:** Confirm `myitdev.com` is "Active" on Cloudflare.
-2. **WWW Redirect:** Set up `www.myitdev.com`.
-3. **Email Forwarding:** Set up `info@myitdev.com` -> Gmail.
+1. **Check Domain Status:** Verify `myitdev.com` activity.
+2. **WWW & SSL:** Set up redirects and verify security.
+3. **Email Forwarding:** info@myitdev.com setup.
 
-### Phase 2: Website Enhancements (Powered by GSD + OpenClaw)
-1. **Contact Form:** Use ACP Agents to generate UI and handle backend logic.
-2. **Portfolio/Gallery:** Add sections for hardware repair and web projects.
-3. **SEO Basics:** Update Meta tags.
+### Phase 2: Website Enhancements (Powered by Antigravity)
+1. **Contact Form:** Use Gemini Sub-agents to build the UI and handle state.
+2. **Portfolio/Gallery:** Create a modern section for showcase.
+3. **SEO & Meta:** Optimize for "IT Services" keywords.
 
 ### Phase 3: LINE Integration
-1. **LINE OA Bot:** Use OpenClaw to automate Webhook setup and Apps Script connection.
+1. **LINE OA Bot:** Connect Apps Script to Messaging API.
 
-## ⚡ Automation Tools
-- **GSD (Get Shit Done):** Use for project mapping and task orchestration.
+## ⚡ Power Tools (Already Installed)
+- **Gemini CLI / Antigravity:** Our primary engine for code, shell, and sub-agent orchestration.
+- **GSD (Get Shit Done):** Use for spec-driven development.
   - Run: `npx get-shit-done-cc@latest --gemini --global`
-- **OpenClaw ACP Agents:** Use for persistent, autonomous task execution.
-  - Run: `pip install openclaw` (to enable acpx and persistent sessions).
+  - Command: `/gsd:map-codebase`
 
 ## 📝 Developer Note
-Pull latest changes at the office. Run `npm install`. Use `/gsd:map-codebase` to start the session tomorrow.
+You have everything needed! Just `git pull` at the office and we can start immediately using the existing Gemini CLI setup.
