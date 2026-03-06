@@ -5,34 +5,40 @@ import {
   Search, 
   Code, 
   MessageSquareMore, 
-  CheckCircle2,
-  ExternalLink
+  ShieldCheck,
+  Cpu,
+  Layers
 } from 'lucide-react';
 
 const services = [
   {
-    title: 'ซ่อมคอมพิวเตอร์',
-    description: 'บริการซ่อมคอมพิวเตอร์ โน้ตบุ๊ก ทั้ง hardware และ software แก้ไขปัญหาคอมช้า ติดไวรัส หรืออัปเกรดเครื่องให้แรงขึ้น',
+    title: 'Computer Repair',
+    titleTh: 'ซ่อมคอมพิวเตอร์',
+    description: 'Expert hardware diagnostic and software recovery for PC & Laptops. Hardware upgrades for peak performance.',
     icon: Wrench,
   },
   {
-    title: 'ดูแลเว็บไซต์',
-    description: 'รับดูแลเว็บไซต์รายเดือน อัปเดตข้อมูล แก้ไขบั๊ก ปรับปรุงประสิทธิภาพ และดูแลความปลอดภัยของระบบ',
+    title: 'Website Management',
+    titleTh: 'ดูแลเว็บไซต์',
+    description: 'Ongoing maintenance, security audits, and performance optimization for your business website.',
     icon: Globe,
   },
   {
-    title: 'จดโดเมนเนม',
-    description: 'บริการจดชื่อโดเมนเนม (.com, .co.th, .net) และจัดหา Hosting ที่รวดเร็ว เสถียร พร้อมใช้งาน',
+    title: 'Domain & Hosting',
+    titleTh: 'จดโดเมน & โฮสติ้ง',
+    description: 'Secure domain registration and high-speed enterprise hosting solutions via Cloudflare ecosystem.',
     icon: Search,
   },
   {
-    title: 'รับจ้างเขียนโปรแกรม',
-    description: 'พัฒนาโปรแกรมตามความต้องการ ทั้ง Desktop App, Web App หรือระบบจัดการฐานข้อมูลขนาดเล็กถึงกลาง',
+    title: 'Custom Software',
+    titleTh: 'รับจ้างเขียนโปรแกรม',
+    description: 'Bespoke software development, automation scripts, and database management tailored to your needs.',
     icon: Code,
   },
   {
-    title: 'รับทำ LINE Bot',
-    description: 'สร้าง LINE Official Account พร้อมระบบตอบกลับอัตโนมัติ (Chatbot) เชื่อมต่อ API เพื่อความสะดวกของธุรกิจ',
+    title: 'LINE Chatbots',
+    titleTh: 'รับทำ LINE Bot',
+    description: 'Professional LINE OA integration with intelligent automated response systems and API connectivity.',
     icon: MessageSquareMore,
   },
 ];
@@ -40,66 +46,84 @@ const services = [
 function App() {
   return (
     <div>
+      {/* Navbar Area */}
+      <nav className="container">
+        <div className="nav-logo">MYITDEV<span style={{color:'#fff'}}>.COM</span></div>
+      </nav>
+
       {/* Hero Section */}
       <header className="hero">
         <div className="container">
-          <h1>Professional IT Solutions</h1>
+          <h1>Modern IT Solutions <br/> for the Digital Age</h1>
           <p>
-            บริการด้านไอทีครบวงจร โดยผู้เชี่ยวชาญที่มีประสบการณ์ 
-            เราพร้อมดูแลทุกปัญหาเทคโนโลยีเพื่อให้ธุรกิจของคุณเดินหน้าต่อได้อย่างราบรื่น
+            เราคือพาร์ทเนอร์ด้านเทคโนโลยีที่พร้อมดูแลคุณ ตั้งแต่การซ่อมบำรุงขั้นพื้นฐาน 
+            ไปจนถึงการพัฒนาซอฟต์แวร์ระดับสูง เพื่อขับเคลื่อนธุรกิจของคุณสู่ความสำเร็จ
           </p>
-          <a href="https://line.me" target="_blank" rel="noopener noreferrer" className="cta-button">
-            ปรึกษาเราได้เลยที่ LINE
-          </a>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <a href="https://line.me" target="_blank" rel="noopener noreferrer" className="cta-button">
+              Get Started Now
+            </a>
+            <a href="#services" style={{ padding: '1.1rem 2.5rem', color: '#fff', textDecoration: 'none', fontWeight: '600', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '50px' }}>
+              View Services
+            </a>
+          </div>
         </div>
       </header>
 
+      {/* Features/Stats Section (Quick) */}
+      <section className="container" id="services" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '3rem', margin: '4rem auto', textAlign: 'center' }}>
+          <div>
+            <ShieldCheck color="#3b82f6" size={32} style={{ marginBottom: '0.5rem' }} />
+            <h5 style={{ fontSize: '1.1rem' }}>Secure & Reliable</h5>
+          </div>
+          <div>
+            <Cpu color="#3b82f6" size={32} style={{ marginBottom: '0.5rem' }} />
+            <h5 style={{ fontSize: '1.1rem' }}>High Performance</h5>
+          </div>
+          <div>
+            <Layers color="#3b82f6" size={32} style={{ marginBottom: '0.5rem' }} />
+            <h5 style={{ fontSize: '1.1rem' }}>Scalable Tech</h5>
+          </div>
+      </section>
+
       {/* Services Section */}
       <section className="container">
-        <h2 className="section-title">บริการของเรา</h2>
+        <h2 className="section-title">Our Specialized Services</h2>
         <div className="services-grid">
           {services.map((service, index) => (
             <div key={index} className="service-card">
               <div className="icon-wrapper">
-                <service.icon size={28} />
+                <service.icon size={32} />
               </div>
-              <h3>{service.title}</h3>
+              <div style={{ fontSize: '0.75rem', color: '#3b82f6', fontWeight: '600', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
+                Service {index + 1}
+              </div>
+              <h3 style={{ marginBottom: '0.5rem' }}>{service.title}</h3>
+              <h4 style={{ fontSize: '1.1rem', color: '#94a3b8', fontWeight: '400', marginBottom: '1.25rem' }}>{service.titleTh}</h4>
               <p>{service.description}</p>
             </div>
           ))}
         </div>
+      </section>
 
-        {/* Why Choose Us */}
-        <div style={{ background: '#f1f5f9', padding: '4rem 2rem', borderRadius: '24px', marginBottom: '5rem' }}>
-          <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>ทำไมต้องเลือกเรา?</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
-            <div style={{ textAlign: 'center' }}>
-              <CheckCircle2 color="#2563eb" size={40} style={{ marginBottom: '1rem' }} />
-              <h4>เชี่ยวชาญเฉพาะทาง</h4>
-              <p style={{ color: '#64748b' }}>ทีมงานมีประสบการณ์ตรงในสายงานไอที</p>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <CheckCircle2 color="#2563eb" size={40} style={{ marginBottom: '1rem' }} />
-              <h4>บริการรวดเร็ว</h4>
-              <p style={{ color: '#64748b' }}>ตอบกลับไว แก้ไขปัญหาได้ทันท่วงที</p>
-            </div>
-            <div style={{ textAlign: 'center' }}>
-              <CheckCircle2 color="#2563eb" size={40} style={{ marginBottom: '1rem' }} />
-              <h4>ราคาเป็นกันเอง</h4>
-              <p style={{ color: '#64748b' }}>ประเมินราคาตามจริง ไม่มีค่าใช้จ่ายแฝง</p>
-            </div>
-          </div>
+      {/* Final Call to Action */}
+      <section style={{ background: 'rgba(30, 41, 59, 0.3)', padding: '6rem 0', textAlign: 'center', marginTop: '4rem' }}>
+        <div className="container">
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>Ready to optimize your IT?</h2>
+          <p style={{ color: '#94a3b8', marginBottom: '2.5rem', maxWidth: '600px', margin: '0 auto 2.5rem' }}>
+            ไม่ว่าจะเป็นโปรเจกต์ขนาดเล็กหรือใหญ่ ทีมงาน MYITDEV พร้อมให้คำปรึกษาและลงมือทำอย่างมืออาชีพ
+          </p>
+          <a href="https://line.me" className="cta-button">
+            Chat with our Experts
+          </a>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p>© {new Date().getFullYear()} IT Solutions & Repair. All rights reserved.</p>
-          <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'center', gap: '1rem' }}>
-            <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Privacy Policy</a>
-            <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Contact Us</a>
-          </div>
+          <div className="footer-logo">MYITDEV<span style={{color: '#3b82f6'}}>.COM</span></div>
+          <p style={{ color: '#475569' }}>© {new Date().getFullYear()} MYITDEV IT Solutions. All rights reserved.</p>
         </div>
       </footer>
     </div>
