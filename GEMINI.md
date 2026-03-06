@@ -10,26 +10,22 @@
 ## 🛠️ Detailed Next Steps for Tomorrow
 ### Phase 1: Technical Polish
 1. **Check Domain Status:** Confirm `myitdev.com` is "Active" on Cloudflare.
-2. **WWW Redirect:** Set up `www.myitdev.com` to point to the main site.
-3. **SSL/HTTPS:** Verify secure connection is fully active.
-4. **Email Forwarding:** Set up `info@myitdev.com` -> Gmail (Free via Cloudflare).
+2. **WWW Redirect:** Set up `www.myitdev.com`.
+3. **Email Forwarding:** Set up `info@myitdev.com` -> Gmail.
 
-### Phase 2: Website Enhancements (Powered by GSD)
-1. **Contact Form:** Add a lead generation form (Name, Phone, Service type).
-2. **Portfolio/Gallery:** Add sections for hardware repair photos and web projects.
-3. **SEO Basics:** Update Meta tags for better search engine ranking.
+### Phase 2: Website Enhancements (Powered by GSD + OpenClaw)
+1. **Contact Form:** Use ACP Agents to generate UI and handle backend logic.
+2. **Portfolio/Gallery:** Add sections for hardware repair and web projects.
+3. **SEO Basics:** Update Meta tags.
 
 ### Phase 3: LINE Integration
-1. **LINE OA Bot:** Connect the existing Apps Script to LINE Messaging API.
+1. **LINE OA Bot:** Use OpenClaw to automate Webhook setup and Apps Script connection.
 
-## ⚡ GSD (Get Shit Done) Integration
-We will use GSD to prevent "context rot" and speed up development.
-- **Goal:** Use GSD's meta-prompting to manage complex features (Phase 2 & 3).
-- **First Command tomorrow:** 
-  ```bash
-  npx get-shit-done-cc@latest --gemini --global
-  ```
-- **Then Run:** `/gsd:map-codebase` to let AI understand the full architecture.
+## ⚡ Automation Tools
+- **GSD (Get Shit Done):** Use for project mapping and task orchestration.
+  - Run: `npx get-shit-done-cc@latest --gemini --global`
+- **OpenClaw ACP Agents:** Use for persistent, autonomous task execution.
+  - Run: `pip install openclaw` (to enable acpx and persistent sessions).
 
 ## 📝 Developer Note
-Run `npm install` on the office machine after pulling. The `dist` folder is generated via `npm run build`.
+Pull latest changes at the office. Run `npm install`. Use `/gsd:map-codebase` to start the session tomorrow.
