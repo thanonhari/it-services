@@ -1,0 +1,20 @@
+﻿services:
+  line-mcp-remote:
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp
+    container_name: line-mcp-remote
+    restart: always
+    network_mode: host
+    environment:
+      - CHANNEL_ACCESS_TOKEN=HUHT73hmPLC8qWssfFCMZyRwLn8OHtMceRuFXZvbS2EdLPV9mpo4As+KuG/K0i6RczEblQE65C/6yIVhU9cf4YAdJaVsOKcuOUxDhGdkIKhWexrMxl9K1wpSJN1k70VKDgofLcdKOGyRyYOuA/S7/gdB04t89/1O/w1cDnyilFU=
+      - DESTINATION_USER_ID=U3cab701e84cfe505d611804e3a225521
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: line-mcp-tunnel
+    restart: always
+    network_mode: host
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=eyJhIjoiNGIxNjRiMDMxZWNhNjZlZjQyZGU4ZjUwYjJjNWUzMzgiLCJ0IjoiMTk2M2RkYmQtZmYzOS00YWEzLWJmN2QtYzAxZjMzOTQyZTk2IiwicyI6IjJERzJmVjQ4d3JSRUF0UUQvU1RBT1BENm8rcWF6Q3RVYTE4OGQzbldPMlEwUWNPaFJZR1Z0Szlxb1owMXh2MHBLMW16dkdVemN1aEtQQUxqU3RXTTBnPT0ifQ==

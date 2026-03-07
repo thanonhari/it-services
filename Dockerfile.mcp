@@ -1,0 +1,4 @@
+FROM node:22-slim
+RUN npm install -g mcp-proxy @line/line-bot-mcp-server
+ENTRYPOINT ["mcp-proxy", "--port", "3000", "--"]
+CMD ["line-bot-mcp-server"]
