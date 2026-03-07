@@ -245,7 +245,7 @@ function App() {
       </footer>
 
       {/* Floating LINE Button */}
-      <a href="https://line.me/ti/p/@your-line-id" target="_blank" rel="noopener noreferrer" className="line-float">
+      <a href="https://lin.ee/Ywrvclv" target="_blank" rel="noopener noreferrer" className="line-float">
         <MessageSquareMore />
       </a>
     </div>
