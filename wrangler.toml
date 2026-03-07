@@ -1,1 +1,3 @@
-﻿name = "myitdev-bot"`nmain = "src/index.ts"`ncompatibility_date = "2026-03-07"
+name = "myitdev-bot"
+main = "src/index.ts"
+compatibility_date = "2026-03-07"
