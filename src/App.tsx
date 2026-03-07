@@ -7,7 +7,10 @@ import {
   MessageSquareMore, 
   ShieldCheck,
   Cpu,
-  Layers
+  Layers,
+  Mail,
+  Phone,
+  MapPin
 } from 'lucide-react';
 
 const services = [
@@ -106,16 +109,74 @@ function App() {
         </div>
       </section>
 
-      {/* Final Call to Action */}
-      <section style={{ background: 'rgba(30, 41, 59, 0.3)', padding: '6rem 0', textAlign: 'center', marginTop: '4rem' }}>
+      {/* Contact Section */}
+      <section className="contact-section" id="contact">
         <div className="container">
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>Ready to optimize your IT?</h2>
-          <p style={{ color: '#94a3b8', marginBottom: '2.5rem', maxWidth: '600px', margin: '0 auto 2.5rem' }}>
-            ไม่ว่าจะเป็นโปรเจกต์ขนาดเล็กหรือใหญ่ ทีมงาน MYITDEV พร้อมให้คำปรึกษาและลงมือทำอย่างมืออาชีพ
-          </p>
-          <a href="https://line.me" className="cta-button">
-            Chat with our Experts
-          </a>
+          <div className="contact-grid">
+            <div className="contact-info">
+              <div style={{ color: '#3b82f6', fontWeight: '600', marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                Contact Us
+              </div>
+              <h2>Let's build something <br/> great together.</h2>
+              <p style={{ color: '#94a3b8', fontSize: '1.1rem', marginBottom: '3rem' }}>
+                มีคำถามหรือต้องการคำปรึกษา? ส่งข้อความหาเราได้ทันที ทีมงานจะติดต่อกลับภายใน 24 ชั่วโมง
+              </p>
+              
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+                  <div className="icon-wrapper" style={{ marginBottom: 0, width: '50px', height: '50px' }}>
+                    <Mail size={24} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '0.875rem', color: '#475569' }}>Email</div>
+                    <div style={{ fontWeight: '500' }}>info@myitdev.com</div>
+                  </div>
+                </div>
+                <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+                  <div className="icon-wrapper" style={{ marginBottom: 0, width: '50px', height: '50px' }}>
+                    <Phone size={24} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '0.875rem', color: '#475569' }}>Phone</div>
+                    <div style={{ fontWeight: '500' }}>+66 88 760 2708</div>
+                  </div>
+                </div>
+                <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+                  <div className="icon-wrapper" style={{ marginBottom: 0, width: '50px', height: '50px' }}>
+                    <MapPin size={24} />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '0.875rem', color: '#475569' }}>Location</div>
+                    <div style={{ fontWeight: '500' }}>Chachoengsao, Thailand</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="contact-form">
+              <form action="https://formspree.io/f/xkoqneda" method="POST">
+                <div className="form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                  <div className="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" className="form-control" placeholder="ชื่อ-นามสกุล" required />
+                  </div>
+                  <div className="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" className="form-control" placeholder="your@email.com" required />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label>Subject</label>
+                  <input type="text" name="subject" className="form-control" placeholder="หัวข้อที่ต้องการติดต่อ" required />
+                </div>
+                <div className="form-group">
+                  <label>Message</label>
+                  <textarea name="message" className="form-control" placeholder="รายละเอียดความต้องการของคุณ..." required></textarea>
+                </div>
+                <button type="submit" className="submit-btn">Send Message</button>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
 
