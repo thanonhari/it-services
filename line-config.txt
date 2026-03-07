@@ -1,0 +1,3 @@
+Channel access token
+HUHT73hmPLC8qWssfFCMZyRwLn8OHtMceRuFXZvbS2EdLPV9mpo4As+KuG/K0i6RczEblQE65C/6yIVhU9cf4YAdJaVsOKcuOUxDhGdkIKhWexrMxl9K1wpSJN1k70VKDgofLcdKOGyRyYOuA/S7/gdB04t89/1O/w1cDnyilFU=
+Channel secret 4df02bbd9eb25048320761ed582de18b
