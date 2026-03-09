@@ -1,28 +1,20 @@
 # 🚀 Project: MYITDEV.COM - Progress Report
 
-## 📍 Last Status (March 7, 2026)
-- **Domain:** `myitdev.com` is active and pointing to Cloudflare.
-- **Web Hosting:** Deployed on **Cloudflare Pages** (`myitdev-web`).
-- **LINE Integration:** Phase 3 COMPLETED. LINE Bot is active on Cloudflare Workers.
-- **Contact Form:** Phase 2 partial COMPLETED. Form is live using Formspree.
-- **Portfolio Section:** Phase 2 COMPLETED. Modern showcase section added.
-- **SEO & Meta:** Phase 2 COMPLETED. Optimized for IT Services (Dual language + JSON-LD).
+## 📍 Last Status (March 9, 2026) - UPDATED
+- **Frontend Deployment:** Moved to a brand new project **`myitdev-official`** on Cloudflare Pages to resolve edge caching issues.
+- **Domain:** `myitdev.com` and `www.myitdev.com` are now correctly linked to the new `myitdev-official` project.
+- **Language Switcher:** TH/EN toggle implemented and persistent via LocalStorage.
+- **Contact Form:** 
+    - Migrated from Formspree to custom Cloudflare Worker backend.
+    - Submissions are saved to **D1 Database** (`myitdev-db`).
+    - Real-time **LINE Push Notification** implemented for Admin.
+- **Worker:** `myitdev-bot` updated with `/submit-form` endpoint and CORS support for `myitdev.com` and `pages.dev`.
 
-## 🛠️ Detailed Next Steps
-### Phase 1: Technical Polish
-1. **WWW & SSL:** COMPLETED (Redirects & Security Headers added).
-2. **Email Forwarding:** info@myitdev.com setup (Verified mx records).
+## 🛠️ Infrastructure Details
+- **Pages Project:** `myitdev-official` (Production branch: `main`)
+- **Worker Name:** `myitdev-bot`
+- **Database:** D1 `myitdev-db` (Table: `contacts`)
 
-### Phase 2: Website Enhancements
-1. **Portfolio/Gallery:** COMPLETED.
-2. **SEO & Meta:** COMPLETED.
-3. **Analytics:** COMPLETED (Google Analytics G-5Z456FM1D5 integrated).
-
-## ⚡ Power Tools (Already Installed)
-- **Gemini CLI / Antigravity:** Our primary engine for code, shell, and sub-agent orchestration.
-- **GSD (Get Shit Done):** Use for spec-driven development.
-  - Run: `npx get-shit-done-cc@latest --gemini --global`
-  - Command: `/gsd:map-codebase`
-
-## 📝 Developer Note
-You have everything needed! Just `git pull` at the office and we can start immediately using the existing Gemini CLI setup.
+## 📝 Note for Next Session (at Home)
+1. Run `git pull` to get the latest `App.tsx` and `index.ts`.
+2. All core features are live. Next focus could be **Portfolio Image Optimization (WebP)** or **Detailed Admin Dashboard** for viewing contacts.
