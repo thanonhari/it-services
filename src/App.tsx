@@ -191,24 +191,28 @@ function App() {
     
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
+try {
+  console.log('Sending data to:', 'https://myitdev-bot.thanonhari.workers.dev/submit-form');
+  const response = await fetch('https://myitdev-bot.thanonhari.workers.dev/submit-form', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
 
-    try {
-      const response = await fetch('https://myitdev-bot.thanonhari.workers.dev/submit-form', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+  if (response.ok) {
+    setStatus('success');
+    (e.target as HTMLFormElement).reset();
+    setTimeout(() => setStatus('idle'), 5000);
+  } else {
+    const errText = await response.text();
+    console.error('Form submission failed:', response.status, errText);
+    setStatus('error');
+  }
+} catch (error) {
+  console.error('Fetch error:', error);
+  setStatus('error');
+}
 
-      if (response.ok) {
-        setStatus('success');
-        (e.target as HTMLFormElement).reset();
-        setTimeout(() => setStatus('idle'), 5000);
-      } else {
-        setStatus('error');
-      }
-    } catch (error) {
-      setStatus('error');
-    }
   };
 
   return (

@@ -12,7 +12,7 @@ type Bindings = {
 const app = new Hono<{ Bindings: Bindings }>()
 
 app.use('*', cors({
-  origin: ['https://myitdev.com', 'http://localhost:5173'],
+  origin: ['https://myitdev.com', 'http://localhost:5173', 'https://main.myitdev-web.pages.dev'],
   allowMethods: ['POST', 'GET', 'OPTIONS'],
 }))
 
