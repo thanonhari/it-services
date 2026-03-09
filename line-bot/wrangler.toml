@@ -6,3 +6,6 @@ compatibility_date = "2026-03-07"
 binding = "DB"
 database_name = "myitdev-db"
 database_id = "876bc8ba-e79d-4004-bd00-5f6efa8647b0"
+
+[triggers]
+crons = ["0 9 * * *"] # 09:00 UTC = 16:00 Thailand
