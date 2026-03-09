@@ -1,3 +1,8 @@
 name = "myitdev-bot"
 main = "src/index.ts"
 compatibility_date = "2026-03-07"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "myitdev-db"
+database_id = "876bc8ba-e79d-4004-bd00-5f6efa8647b0"
