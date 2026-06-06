@@ -1,0 +1,2 @@
+﻿ALTER TABLE leads ADD COLUMN status TEXT DEFAULT 'new';
+ALTER TABLE leads ADD COLUMN notes TEXT;

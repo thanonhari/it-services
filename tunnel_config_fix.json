@@ -1,1 +1,1 @@
-{"config": {"ingress": [{"hostname": "mcp.myitdev.com", "service": "http://localhost:3000"}, {"service": "http_status:404"}]}}
+{"config": {"ingress": [{"hostname": "mcp.myitdev.com", "service": "http://localhost:3000"}, {"hostname": "ai.myitdev.com", "service": "http://localhost:9379"}, {"service": "http_status:404"}]}}

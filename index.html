@@ -1,12 +1,25 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="th">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Z456FM1D5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5Z456FM1D5');
+    </script>
+
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "3af3a193f01e4198872efa35532a4ea1"}'></script>
+    <!-- End Cloudflare Web Analytics -->
+
     <!-- Primary Meta Tags -->
-    <title>MYITDEV.COM - Expert IT Solutions, Web Design & LINE Bots in Thailand</title>
-    <meta name="title" content="MYITDEV.COM - Modern IT Solutions & Software Development" />
+    <title>MYITDEV.COM - Expert IT Solutions, Web Design & LINE Bots in Thailand</title>      
+    <meta name="title" content="MYITDEV.COM - Modern IT Solutions & Software Development" />  
     <meta name="description" content="Professional IT services in Chachoengsao & Thailand. Computer repair, web development, hosting, and custom LINE Bots. Your partner for digital success. บริการซ่อมคอมพิวเตอร์ ทำเว็บไซต์ และ LINE Bot" />
     <meta name="keywords" content="IT Services Thailand, Computer Repair Chachoengsao, Web Development Thailand, LINE Bot Developer, IT Support, ซ่อมคอมพิวเตอร์, ฉะเชิงเทรา, รับทำเว็บไซต์, รับทำ LINE Bot, จดโดเมน, โฮสติ้ง" />
     <meta name="author" content="MYITDEV IT Solutions" />
@@ -14,7 +27,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://myitdev.com/" />
-    <meta property="og:title" content="MYITDEV.COM - Your Digital Technology Partner" />
+    <meta property="og:title" content="MYITDEV.COM - Your Digital Technology Partner" />      
     <meta property="og:description" content="Expert IT Solutions: from hardware repair to custom software and LINE Bot development. Serving Chachoengsao and nationwide." />
     <meta property="og:image" content="https://myitdev.com/og-image.jpg" />
 
@@ -29,10 +42,9 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": "ProfessionalService",
       "name": "MYITDEV.COM",
       "image": "https://myitdev.com/og-image.jpg",
-      "@id": "https://myitdev.com",
       "url": "https://myitdev.com",
       "telephone": "+66887602708",
       "address": {
@@ -40,70 +52,29 @@
         "addressLocality": "Chachoengsao",
         "addressCountry": "TH"
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 13.6904,
-        "longitude": 101.0703
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
-        "opens": "09:00",
-        "closes": "20:00"
-      },
-      "sameAs": [
-        "https://github.com/thanonhari/it-services"
-      ]
+      "serviceType": ["IT Solutions", "Web Design", "LINE Bots", "Blog"],
+      "priceRange": "$$"
     }
     </script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "IT Solutions & Software Development",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "MYITDEV.COM"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "Thailand"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "IT Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Computer Repair"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Web Development"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "LINE Bot Development"
-            }
-          }
-        ]
-      }
+      "@type": "ItemList",
+      "name": "Latest IT Articles",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "5 วิธีป้องกันคอมพิวเตอร์จากมัลแวร์และไวรัสในปี 2026",
+          "url": "https://myitdev.com/#blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ทำไมธุรกิจยุคใหม่ถึงต้องมี LINE Official Account และแชทบอท",
+          "url": "https://myitdev.com/#blog"
+        }
+      ]
     }
     </script>
 

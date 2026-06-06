@@ -1,0 +1,15 @@
+﻿name = "myitdev-notify"
+main = "src/index.ts"
+compatibility_date = "2024-05-11"
+
+[[routes]]
+pattern = "notify.myitdev.com"
+custom_domain = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "myitdev-db"
+database_id = "876bc8ba-e79d-4004-bd00-5f6efa8647b0"
+
+[ai]
+binding = "AI"
