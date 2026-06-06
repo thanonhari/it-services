@@ -639,7 +639,7 @@ function App() {
         <div className="container" style={{ maxWidth: '800px', padding: '4rem 1.5rem' }}>
           <img src={post.image} alt={post.title} style={{ width: '100%', height: '400px', objectFit: 'cover', borderRadius: '24px', marginBottom: '3rem' }} />
           <h1 style={{ fontSize: '3rem', fontWeight: '700', marginBottom: '2rem', lineHeight: '1.2' }}>{lang === 'th' ? post.title : post.title_en}</h1>
-          <div style={{ fontSize: '1.1rem', lineHeight: '1.8', whiteSpace: 'pre-line' }}>{lang === 'th' ? post.content_th : post.content_en}</div>
+          <div className="preserve-whitespace" style={{ fontSize: '1.1rem', lineHeight: '1.8' }}>{lang === 'th' ? post.content_th : post.content_en}</div>
         </div>
       </div>
     );
@@ -724,8 +724,8 @@ function App() {
             <div className="contact-form">
               <form onSubmit={handleSubmit}>
                 <div className="form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                  <input type="text" name="name" placeholder={t.contact.name} className="form-control" required />
-                  <input type="email" name="email" placeholder={t.contact.email} className="form-control" required />
+                  <input type="text" name="name" placeholder={t.contact.name} className="form-control" autoComplete="name" required />
+                  <input type="email" name="email" placeholder={t.contact.email} className="form-control" autoComplete="email" required />
                 </div>
                 <input type="text" name="subject" placeholder={t.contact.subject} className="form-control" required />
                 <textarea name="message" placeholder={t.contact.message} className="form-control" required style={{ height: '150px' }}></textarea>
