@@ -1,4 +1,5 @@
 import { Hono } from "hono"
+import { cors } from 'hono/cors'
 
 type Bindings = {
   AI: any;
@@ -117,4 +118,83 @@ app.post("/webhook", async (c) => {
   return c.text("OK")
 })
 
-export default app
+app.get("/test-telegram", async (c) => {
+  if (!c.env.TELEGRAM_BOT_TOKEN || !c.env.TELEGRAM_CHAT_ID) return c.text("Missing Telegram Config")
+  
+  const testMsg = "🚀 MYITDEV System Test: Telegram Connection OK!"
+  const url = `https://api.telegram.org/bot${c.env.TELEGRAM_BOT_TOKEN}/sendMessage`
+  
+  await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ chat_id: c.env.TELEGRAM_CHAT_ID, text: testMsg })
+  })
+  
+  return c.text("Test message sent to Telegram")
+})
+
+export default {
+  fetch: app.fetch,
+  async scheduled(event: any, env: Bindings, ctx: ExecutionContext) {
+    // 1. Get Web Contacts
+    const { results: webContacts } = await env.DB.prepare(
+      "SELECT name, email, subject FROM contacts WHERE timestamp >= datetime('now', '-1 day') ORDER BY timestamp DESC"
+    ).all()
+
+    // 2. Get LINE Leads
+    const { results: lineLeads } = await env.DB.prepare(
+      "SELECT displayName, lastMessage FROM line_leads WHERE timestamp >= datetime('now', '-1 day') ORDER BY timestamp DESC"
+    ).all()
+
+    // 3. Get LIFF Leads
+    const { results: liffLeads } = await env.DB.prepare(
+      "SELECT name, service FROM liff_leads WHERE timestamp >= datetime('now', '-1 day') ORDER BY timestamp DESC"
+    ).all()
+
+    let summary = `📊 *Daily Report: MYITDEV.COM*\n`
+    summary += `---------------------------\n\n`
+
+    // Section: LIFF Service Requests
+    summary += `📝 *Service Requests (LIFF):* ${liffLeads.length}\n`
+    if (liffLeads.length > 0) {
+      liffLeads.forEach((row: any, i: number) => {
+        summary += `  ${i+1}. 🛠 ${row.name} [${row.service}]\n`
+      })
+    }
+    summary += `\n`
+
+    // Section: Web
+    summary += `🌐 *Web Contacts:* ${webContacts.length}\n`
+    if (webContacts.length > 0) {
+      webContacts.forEach((row: any, i: number) => {
+        summary += `  ${i+1}. 👤 ${row.name} (${row.subject})\n`
+      })
+    }
+    summary += `\n`
+
+    // Section: LINE Chat
+    summary += `🟢 *LINE Chats:* ${lineLeads.length}\n`
+    if (lineLeads.length > 0) {
+      lineLeads.forEach((row: any, i: number) => {
+        summary += `  ${i+1}. 👤 ${row.displayName}: "${row.lastMessage.substring(0, 20)}..."\n`
+      })
+    }
+
+    if (webContacts.length === 0 && lineLeads.length === 0 && liffLeads.length === 0) {
+      summary += `\nเงียบเหงาจังวันนี้... มาพยายามกันต่อครับ! 🚀`
+    }
+
+    if (env.TELEGRAM_BOT_TOKEN && env.TELEGRAM_CHAT_ID) {
+      const url = `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`
+      await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: env.TELEGRAM_CHAT_ID,
+          text: summary,
+          parse_mode: "Markdown"
+        })
+      })
+    }
+  }
+}
