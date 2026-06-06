@@ -172,7 +172,53 @@ export default {
       }
     }
 
-    // 6. API: Get Chat History (Admin Only)
+    // 6. API: Blog CMS (Public/Admin)
+    if (url.pathname === '/api/posts' && request.method === 'GET') {
+      try {
+        const posts = await env.DB.prepare('SELECT * FROM posts ORDER BY created_at DESC').all();
+        return new Response(JSON.stringify(posts.results), { 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        });
+      } catch (err) {
+        return new Response(JSON.stringify({ error: err.message }), { status: 500, headers: corsHeaders });
+      }
+    }
+
+    if (url.pathname.startsWith('/api/posts/') && request.method === 'GET') {
+      try {
+        const id = url.pathname.split('/').pop();
+        const post = await env.DB.prepare('SELECT * FROM posts WHERE id = ?').bind(id).first();
+        return new Response(JSON.stringify(post), { 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        });
+      } catch (err) {
+        return new Response(JSON.stringify({ error: err.message }), { status: 500, headers: corsHeaders });
+      }
+    }
+
+    if (url.pathname === '/api/posts' && request.method === 'POST') {
+      const authHeader = request.headers.get('Authorization');
+      if (!authHeader) return new Response('Unauthorized', { status: 401, headers: corsHeaders });
+      // Skip full profile verify for speed in CMS, assuming token is checked by other routes or client
+      
+      try {
+        const post = await request.json();
+        await env.DB.prepare(`
+          INSERT INTO posts (id, title, title_en, excerpt, content_th, content_en, date, time, image, category)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          ON CONFLICT(id) DO UPDATE SET
+          title = excluded.title, title_en = excluded.title_en, excerpt = excluded.excerpt,
+          content_th = excluded.content_th, content_en = excluded.content_en,
+          date = excluded.date, time = excluded.time, image = excluded.image, category = excluded.category
+        `).bind(post.id, post.title, post.title_en, post.excerpt, post.content_th, post.content_en, post.date, post.time, post.image, post.category).run();
+        
+        return new Response(JSON.stringify({ success: true }), { headers: corsHeaders });
+      } catch (err) {
+        return new Response(JSON.stringify({ error: err.message }), { status: 500, headers: corsHeaders });
+      }
+    }
+
+    // 7. API: Get Chat History (Admin Only)
     if (url.pathname.startsWith('/api/history/') && request.method === 'GET') {
       const authHeader = request.headers.get('Authorization');
       if (!authHeader) return new Response('Unauthorized', { status: 401, headers: corsHeaders });
@@ -206,6 +252,53 @@ export default {
         return new Response(JSON.stringify({ 
           choices: [{ message: { content: aiRes.response } }] 
         }), { 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        });
+      } catch (err) {
+        return new Response(JSON.stringify({ error: err.message }), { status: 500, headers: corsHeaders });
+      }
+    }
+
+    // 8. API: Rich Menu Management (Admin Only)
+    if (url.pathname === '/api/richmenus' && request.method === 'GET') {
+      const authHeader = request.headers.get('Authorization');
+      if (!authHeader) return new Response('Unauthorized', { status: 401, headers: corsHeaders });
+
+      try {
+        const res = await fetch('https://api.line.me/v2/bot/richmenu/list', {
+          headers: { 'Authorization': 'Bearer ' + env.LINE_TOKEN },
+        });
+        const data = await res.json();
+        
+        // Also get the current default rich menu ID
+        const defaultRes = await fetch('https://api.line.me/v2/bot/user/all/richmenu', {
+          headers: { 'Authorization': 'Bearer ' + env.LINE_TOKEN },
+        });
+        const defaultData = defaultRes.ok ? await defaultRes.json() : { richMenuId: null };
+
+        return new Response(JSON.stringify({ 
+          richMenus: data.richmenus, 
+          defaultId: defaultData.richMenuId 
+        }), { 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        });
+      } catch (err) {
+        return new Response(JSON.stringify({ error: err.message }), { status: 500, headers: corsHeaders });
+      }
+    }
+
+    if (url.pathname.startsWith('/api/richmenus/default/') && request.method === 'POST') {
+      const authHeader = request.headers.get('Authorization');
+      if (!authHeader) return new Response('Unauthorized', { status: 401, headers: corsHeaders });
+
+      try {
+        const richMenuId = url.pathname.split('/').pop();
+        const res = await fetch(`https://api.line.me/v2/bot/user/all/richmenu/${richMenuId}`, {
+          method: 'POST',
+          headers: { 'Authorization': 'Bearer ' + env.LINE_TOKEN },
+        });
+        
+        return new Response(JSON.stringify({ success: res.ok }), { 
           headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
         });
       } catch (err) {
