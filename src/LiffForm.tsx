@@ -12,18 +12,31 @@ function LiffForm() {
   });
 
   useEffect(() => {
-    // Initialize LIFF
-    if ((window as any).liff) {
-      (window as any).liff.init({ liffId: "2009380094-gwpeKOqV" }).then(async () => {
-        if (!(window as any).liff.isLoggedIn()) {
-          (window as any).liff.login();
+    const initLiff = () => {
+      const liff = (window as { liff?: { init: (o: { liffId: string }) => Promise<void>; isLoggedIn: () => boolean; login: () => void; getProfile: () => Promise<{ userId: string; displayName: string }> } }).liff;
+      if (!liff) return;
+      liff.init({ liffId: '2009380094-gwpeKOqV' }).then(async () => {
+        if (!liff.isLoggedIn()) {
+          liff.login();
         } else {
-          const profile = await (window as any).liff.getProfile();
+          const profile = await liff.getProfile();
           setUserId(profile.userId);
-          setFormData(prev => ({ ...prev, name: profile.displayName }));
+          setFormData((prev) => ({ ...prev, name: profile.displayName }));
         }
-      }).catch((err: any) => console.error("LIFF Init Error", err));
+      }).catch((err: unknown) => console.error('LIFF Init Error', err));
+    };
+
+    if ((window as { liff?: unknown }).liff) {
+      initLiff();
+      return;
     }
+
+    const script = document.createElement('script');
+    script.src = 'https://static.line-scdn.net/liff/edge/2/sdk.js';
+    script.charset = 'utf-8';
+    script.onload = initLiff;
+    document.head.appendChild(script);
+    return () => { script.remove(); };
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {

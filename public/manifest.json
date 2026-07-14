@@ -1,0 +1,17 @@
+{
+  "name": "MYITDEV IT Solutions",
+  "short_name": "MYITDEV",
+  "description": "Modern IT Solutions for the Digital Age",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "https://qr-official.line.me/sid/M/643mztqx.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

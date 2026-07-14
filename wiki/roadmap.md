@@ -2,16 +2,26 @@
 
 Source snapshot from project status (update when priorities change).
 
-## Phase 3: SEO, content, marketing
+## Done (site improvement batch)
+
+- Hero/CTA focused on repair · web · LINE + LINE primary button
+- Portfolio = real MYITDEV systems (no Unsplash stock)
+- Footer: removed public Admin link
+- Dynamic `sitemap.xml` via Pages Function + posts API
+- Blog HTML meta inject in `_middleware` for crawlers
+- Lazy-load Admin chunk + asset cache headers
+- Form labels, skip-link, focus-visible basics
+
+## Next
 
 1. **Google Review incentives**  
    LINE Bot flow: privilege/discount in exchange for a Google Business review.
 
-2. **Blog routing**  
-   Solid path-based URLs and indexable posts (`/blog/post-slug`). Partial work may already exist via `react-router-dom`; verify end-to-end SEO.
+2. **More local SEO posts**  
+   Chachoengsao repair, LINE OA for SME, website care guides.
 
-3. **SEO meta / OG**  
-   Dynamic Open Graph tags for Facebook and LINE shares.
+3. **Measure Lighthouse after deploy**  
+   Confirm LCP improvement on mobile.
 
 ## Backlog hygiene
 
