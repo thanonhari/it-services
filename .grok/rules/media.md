@@ -2,18 +2,20 @@
 
 Keep cover images and short videos **inside the agent window**. Do not default to "open Canva/Photoshop/OpenArt in a browser" unless the user asks or tools fail.
 
+**Status (2026-07-14):** Canva MCP enabled at user config. OpenArt has no reliable public MCP package; use Imagine tools as the OpenArt substitute.
+
 ---
 
 ## Preferred order
 
-| Priority | Tool | Use for |
-|----------|------|---------|
-| 1 | Built-in `image_gen` | New cover, hero, OG image, blog thumbnail |
-| 1 | Built-in `image_edit` | Edit existing brand assets, fix composition |
-| 1 | Built-in `image_to_video` | Short motion from a still (6s or 10s) |
-| 2 | Canva MCP | Template-based social posts if MCP is enabled |
-| 3 | OpenArt MCP | Only if configured under `[mcp_servers.openart]` |
-| 4 | Manual handoff | User exports elsewhere after agent drafts prompt/assets |
+| Priority | Tool | Use for | Status |
+|----------|------|---------|--------|
+| 1 | Built-in `image_gen` | New cover, hero, OG image, blog thumbnail | Ready |
+| 1 | Built-in `image_edit` | Edit existing brand assets, fix composition | Ready |
+| 1 | Built-in `image_to_video` | Short motion from a still (6s or 10s) | Ready |
+| 2 | Canva MCP | Template-based social / brand kits | Enabled (restart session if tools missing) |
+| 3 | OpenArt MCP | Not installed | Skip until a real server exists |
+| 4 | Manual handoff | User exports elsewhere after agent drafts prompt/assets | Fallback |
 
 ---
 
@@ -32,33 +34,42 @@ When the user does not specify style:
 
 ---
 
-## Enable Canva MCP (optional)
+## Canva MCP
 
-User-level `~/.grok/config.toml` currently may list Canva under `disabled_mcp_servers`.  
-To enable:
+User config (`~/.grok/config.toml`):
 
-1. Remove `"grok_com_canva"` from `disabled_mcp_servers` (or set the Canva server `enabled = true` if present).
-2. Restart the Grok session.
-3. Use Canva tools via MCP discovery (`search_tool` → Canva).
+- `grok_com_canva` is **not** in `disabled_mcp_servers` (enabled).
+- After first enable: **restart Grok session** so tools register.
+- Use via MCP discovery (`search_tool` query `canva`).
+- Repo does not store Canva OAuth secrets.
 
-Repo does not store Canva OAuth secrets.
+If Canva tools fail: fall back to Imagine (`image_gen` / `image_edit`).
 
 ---
 
-## Optional: OpenArt MCP
+## OpenArt
 
-If you later add OpenArt:
+There is no maintained `openart-mcp` package documented for this workspace.
+
+Equivalent workflow:
+
+1. `image_gen` for stills
+2. `image_edit` for iterations
+3. `image_to_video` for short clips
+4. Canva MCP when a Canva template is required
+
+If OpenArt later ships a real MCP, add:
 
 ```toml
-# ~/.grok/config.toml  (example only; adjust to real OpenArt MCP package)
+# ~/.grok/config.toml  (only after verifying package + auth)
 [mcp_servers.openart]
-command = "npx"
-args = ["-y", "openart-mcp"]  # replace with real package/command
+command = "..."
+args = ["..."]
 env = { OPENART_API_KEY = "..." }
 enabled = true
 ```
 
-Document the real package name here after it works once.
+Then update this file with the real command.
 
 ---
 
