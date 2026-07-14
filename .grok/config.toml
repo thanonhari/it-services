@@ -1,0 +1,9 @@
+# Repo-level Grok config (deepest wins over user defaults for this tree when trusted).
+# Secrets stay in user ~/.grok/config.toml or Wrangler — not here.
+
+[memory]
+# Cross-session memory for this workspace (experimental). Set false to disable.
+enabled = true
+
+# Model routing is documented in AGENTS.md.
+# Session default still comes from user config unless overridden with /model.

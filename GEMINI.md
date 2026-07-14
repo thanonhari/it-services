@@ -1,34 +1,36 @@
-# 🚀 Project: MYITDEV.COM - Progress Report
+# Project: MYITDEV.COM - Progress Report (legacy snapshot)
 
-## 📍 Last Status (May 27, 2026)
-- **Domain:** `myitdev.com` is active. `www.myitdev.com` CNAME created and proxied.
+> **Canonical agent docs moved to:** [AGENTS.md](./AGENTS.md), [CONTEXT.md](./CONTEXT.md), [wiki/INDEX.md](./wiki/INDEX.md).  
+> Prefer updating the wiki when facts change; keep this file only as a dated snapshot.
+
+## Last Status (June 8, 2026)
+- **Domain:** `myitdev.com` is active. Email Routing for `info@myitdev.com` is **Live** 📧.
 - **Web Hosting:** Deployed on **Cloudflare Pages** (`myitdev-official`).
-- **LINE Integration (CRM 2.0):** 
-  - LINE Bot upgraded with AI Brain (Llama 3 8B) on Workers.
-  - Contact Form routes data to LINE via `myitdev-notify` worker.
-  - Admin Dashboard (`#admin`) secured with **LINE Login** (OAuth).
-- **Database:** Cloudflare D1 (`myitdev-db`) implemented for Lead tracking and LINE User logging.
-- **UI/UX & SEO:** 
-  - Dark/Light Mode toggle implemented.
-  - Knowledge Hub (Blog) section added with JSON-LD structured data.
-  - Back to Top button & Beautiful Toast Notifications added.
-  - Accessibility Score: 96/100, SEO: 100/100, Best Practices: 96/100.
-- **Analytics:** Cloudflare Web Analytics and GA4 integrated concurrently.
+- **LINE Integration (CRM 3.0):** 
+  - **Admin Hub Upgraded:** Direct Messaging, User Tags, Chat History Viewer, and **Bot Traffic Monitor** implemented.
+  - **Rich Menu Manager:** Visual UI for switching Rich Menus directly from the dashboard.
+  - **AI Master Switch:** Toggle between AI auto-response and Manual mode per user.
+  - **QR Code:** Official LINE OA QR code integrated into the website's Contact section.
+- **Backend/Notifications:** `myitdev-notify` worker acts as a central API. **Email Sending** is used for critical alerts (e.g. Bot Detection) to save LINE quotas.
+- **AI Power:** Integrated with Cloudflare Workers AI (Llama 3.1 8B) for both the bot and Admin "Code Lab".
+- **Database:** Cloudflare D1 (`myitdev-db`) stores user profiles, tags, chat history, and **bot traffic logs**.
+- **Local SEO:** Google Maps embedded with precise coordinates and schema updated for physical shop indexing.
 
 ## 🧠 Lessons Learned & Troubleshooting (Experience)
-- **Client-side Routing & OAuth:** When redirecting back to a Single Page Application (React) after OAuth (like LINE Login), the URL structure matters. Query parameters MUST come before the hash fragment (e.g., `/?auth=token#admin`, NOT `/#admin?auth=token`). Browsers ignore query strings placed after the hash, causing the frontend to fail to extract the token.
-- **Cloudflare API Tokens:** When creating tokens for MCP/CLI, be careful with `Not Before` timestamps (UTC timezone differences can lock you out). If using IP Filtering, ensure you use the Public IP, not the internal LAN IP (like 192.168.x.x), or the API will reject requests with `code 10000`.
-- **LINE Login Webhook:** `Invalid redirect_uri` errors usually mean the `client_id` used in the code doesn't match the LINE Login Channel ID, or the callback URL isn't exactly registered in the LINE Developer Console.
-- **PowerShell Escaping:** When writing files via CLI in Windows, `Set-Content` with multi-line strings can trigger security injection warnings if not handled perfectly. Direct file writes via MCP tools are safer and cleaner.
-- **Agent Synchronization:** MCP Servers (`cloudflare`, `filesystem`, `fetch`, `canva`) and Skills (`9arm-skills`, `web-quality-audit`) should be synchronized between the Local Windows machine and the Remote AIS Server (192.168.1.202) to ensure consistent agent intelligence across environments.
+- **Email Routing & Sending Blueprint:** Cloudflare Workers Email Sending (`env.EMAIL.send`) is a 100% free (200/day) alternative to SendGrid/LINE Push for transactional notifications. Requires DNS verification but is highly reusable across any Serverless project.
+- **Edge Middleware Logging Blueprint:** Using `_middleware.ts` in Cloudflare Pages to silently capture data (like `User-Agent`) and write to D1 provides zero-latency analytics/bot-traps without blocking the frontend or relying on client-side JS.
+- **Admin Authentication:** Using LINE Login (OAuth) to secure the Admin Hub allows for a seamless "Owner-only" experience.
+- **Local vs. Cloud AI:** While local models (Gemma) provide privacy, Cloudflare Workers AI offers better availability and latency for web-based dashboard features.
+- **State Management:** Using simple hash-based routing (`#admin`, `#blog`) is easy to implement but limits SEO for deep-linked content like blog posts.
+- **Iframe Security:** Google Maps embeds require allowing external domains in the `frame-src` CSP header to avoid "This content is blocked" errors.
 
 ## 🛠️ Detailed Next Steps
-### Phase 3: Content & Email
-1. **Email Forwarding:** Set up Cloudflare Email Routing for `info@myitdev.com`.
-2. **Dashboard Refinement:** Expand the Admin Dashboard features (e.g., reply directly from the dashboard).
-3. **Blog Content:** Add actual routing and individual pages for the blog posts.
+### Phase 3: SEO, Content, & Marketing
+1. **Google Review Incentives:** Build a LINE Bot flow where customers get a discount or privilege in exchange for a Google Business review.
+2. **Blog Routing:** Upgrade to a robust routing system (e.g. `react-router-dom`) to allow unique, indexable URLs for each blog post (`/blog/post-slug`).
+3. **SEO Meta Tags:** Enhance dynamic Open Graph (OG) tags for sharing pages beautifully on Facebook and LINE.
 
 ## ⚡ Power Tools (Already Installed)
 - **Gemini CLI:** Primary engine for orchestration.
-- **Local Gemma Router:** Running on port 9379 (gemma3-1b-gpu-custom) for smart task routing.
-- **Skills:** `cloudflare`, `web-quality-audit`, `9arm-skills` (debug-mantra, post-mortem, etc.)
+- **Cloudflare Workers AI:** Powering the bot and Admin Hub.
+- **GitHub MCP:** Managing the codebase and issues.

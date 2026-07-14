@@ -1,28 +1,39 @@
-# 🚀 MYITDEV.COM - Professional IT Solutions
+# MYITDEV.COM - Professional IT Solutions
 
-เว็บไซต์ Portfolio และบริการด้านไอทีครบวงจร (Computer Repair, Web Dev, LINE Bot, Software Development) ภายใต้แบรนด์ **MYITDEV.COM**
+เว็บไซต์ Portfolio และบริการด้านไอที (Computer Repair, Web Dev, LINE Bot, Software Development) ภายใต้แบรนด์ **MYITDEV.COM**
 
-## ✨ คุณสมบัติ (Features)
-- **Modern UI/UX**: ดีไซน์สไตล์ Glassmorphism ทันสมัยและเป็นมืออาชีพ
-- **Responsive Design**: รองรับการแสดงผลทุกหน้าจอ (Desktop, Tablet, Mobile)
-- **High Performance**: พัฒนาด้วย React + Vite เพื่อความรวดเร็วในการโหลด
-- **Lucide Icons**: ใช้ไอคอนที่สื่อความหมายชัดเจนและสวยงาม
+## Features
 
-## 🛠️ เทคโนโลยีที่ใช้ (Tech Stack)
-- **Frontend**: React 18, TypeScript
-- **Styling**: Modern CSS (Custom Properties, Backdrop-filter)
-- **Icons**: Lucide-React
-- **Build Tool**: Vite
+- Modern glassmorphism UI, responsive layout
+- React + Vite performance stack
+- Admin Hub + LINE CRM backend (Cloudflare)
 
-## 🚀 เริ่มต้นใช้งาน (Local Development)
+## Tech stack
+
+- **Frontend**: React 18, TypeScript, Vite, Lucide
+- **Edge**: Cloudflare Pages, Workers, D1
+- **Messaging**: LINE OA bot worker
+
+## Local development
 
 ```bash
-# ติดตั้ง dependencies
 npm install
-
-# รันโหมดพัฒนา (Development)
 npm run dev
 ```
+
+## Agent setup (5 switches)
+
+Coding agents in this repo follow durable rules so work stays fast without re-explaining context every chat.
+
+| # | Switch | Where |
+|---|--------|--------|
+| 1 | Read the project before editing | [AGENTS.md](./AGENTS.md) |
+| 2 | Voice / design gate | [.grok/rules/voice.md](./.grok/rules/voice.md) |
+| 3 | Model routing (fast vs strong) | [AGENTS.md](./AGENTS.md) + [.grok/rules/model-routing.md](./.grok/rules/model-routing.md) |
+| 4 | Images / video in-session | [.grok/rules/media.md](./.grok/rules/media.md) |
+| 5 | Second Brain wiki | [wiki/INDEX.md](./wiki/INDEX.md) + [CONTEXT.md](./CONTEXT.md) |
+
+Start any serious session at **AGENTS.md** and **wiki/INDEX.md**.
 
 ---
 © 2026 MYITDEV.COM. All rights reserved.
