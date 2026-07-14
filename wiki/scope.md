@@ -5,7 +5,9 @@
 | Topic | Example page |
 |-------|----------------|
 | Cloudflare Pages / Workers / D1 for this site | architecture, stack |
-| `myitdev.com` / `notify.myitdev.com` behavior | architecture |
+| `myitdev.com` / `notify.myitdev.com` behavior | architecture, api-map |
+| HTTP routes Notify / bot / SPA callers | api-map |
+| Brand, services, phone, map, LINE add-friend | business |
 | LINE OA CRM, rich menu, AI master switch | line-crm |
 | Admin Hub auth, leads, bot traffic, email alerts | architecture, lessons |
 | Blog/SEO/routing decisions for this site | roadmap, lessons |

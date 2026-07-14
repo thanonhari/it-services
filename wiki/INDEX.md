@@ -8,8 +8,10 @@ Not a company-wide multi-project brain. Not the blank domain template.
 | Page | What it holds |
 |------|----------------|
 | [architecture.md](./architecture.md) | Systems map, deploy targets, data flow |
+| [api-map.md](./api-map.md) | Notify + bot routes the SPA/middleware actually call |
 | [stack.md](./stack.md) | Tech choices, commands, env/secrets **names** (not values) |
 | [line-crm.md](./line-crm.md) | LINE OA, Admin Hub CRM, rich menu, AI switch |
+| [business.md](./business.md) | Brand, services, phone, email, map, LINE links |
 | [lessons.md](./lessons.md) | Hard-won blueprints and pitfalls |
 | [roadmap.md](./roadmap.md) | Next work (Phase 3+) |
 | [session-protocol.md](./session-protocol.md) | How agents start/end sessions on this repo |

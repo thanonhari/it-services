@@ -66,3 +66,8 @@
 
 - `react-router-dom`: main, `/admin`, `/blog/:slug` (and LIFF form routes as implemented).
 - Legacy hash `#admin`, `#blog/...` redirected in `App.tsx`.
+
+## See also
+
+- Route catalog: [api-map.md](./api-map.md)
+- Public business facts: [business.md](./business.md)
