@@ -10,6 +10,7 @@
 | [lessons.md](./lessons.md) | Hard-won blueprints and pitfalls |
 | [roadmap.md](./roadmap.md) | Next work (Phase 3+) |
 | [session-protocol.md](./session-protocol.md) | How agents start/end sessions |
+| [Domain template](../templates/domain-agent-setup/README.md) | Blank 5-switch kit for other projects |
 
 ## How to use (agents)
 

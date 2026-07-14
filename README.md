@@ -35,5 +35,10 @@ Coding agents in this repo follow durable rules so work stays fast without re-ex
 
 Start any serious session at **AGENTS.md** and **wiki/INDEX.md**.
 
+### Reuse for other domains
+
+Blank copy-paste kit (music, video, shop, teaching, …):  
+[templates/domain-agent-setup/](./templates/domain-agent-setup/) — see its README and FILL-CHECKLIST.
+
 ---
 © 2026 MYITDEV.COM. All rights reserved.

@@ -1,0 +1,8 @@
+# Repo-level Grok config for this domain project.
+# Secrets stay in user ~/.grok/config.toml or a secret manager — not here.
+
+[memory]
+enabled = {{MEMORY_ENABLED}}
+
+# Model ids are documented in AGENTS.md and .grok/rules/model-routing.md.
+# Session default usually comes from user config; override with /model when needed.
