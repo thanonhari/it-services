@@ -34,7 +34,7 @@ Before any non-trivial work, load this stack:
 | LINE OA bot | `line-bot/` | Worker `myitdev-bot`, D1, Workers AI |
 | D1 schemas | `schema.sql`, `history_schema.sql`, `security_schema.sql`, … | Shared DB `myitdev-db` |
 | Static/public | `public/` | robots, sitemap, headers, SW |
-| Second Brain | `wiki/`, `CONTEXT.md` | Search before re-asking the user |
+| Second Brain | `wiki/`, `CONTEXT.md` | **myitdev product only**; search before re-asking the user |
 
 ### Hard rules
 
@@ -103,21 +103,25 @@ Outputs for this brand: professional IT services, glassmorphism-friendly, not ge
 
 ## [5] Second Brain — search before answering
 
+The wiki is **myitdev-only** (see `wiki/scope.md`). Not a multi-project brain.
+
 **Before** re-asking the user for context that may already be documented:
 
 1. `wiki/INDEX.md` → open the relevant page
 2. `CONTEXT.md` for domain terms
 3. `GEMINI.md` only as legacy status notes (prefer wiki for updated facts)
-4. Notion MCP if the fact is known to live outside the repo
+4. Notion MCP only for facts that truly live outside this product
 
 ### When to write back into the brain
 
-- New durable decision → short note in `wiki/` + link from `wiki/INDEX.md`
+- New durable **myitdev** decision → short note in `wiki/` + link from `wiki/INDEX.md`
 - New domain term → `CONTEXT.md`
 - Incident / lesson → `wiki/lessons.md`
 - Architecture change → `wiki/architecture.md`
 
-Do **not** dump session chat into wiki. Keep pages short and factual.
+Do **not** dump session chat into wiki.  
+Do **not** store other products, personal notes, or blank-template content in `wiki/`.  
+Keep pages short and factual.
 
 ---
 

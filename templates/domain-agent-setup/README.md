@@ -13,6 +13,11 @@ Agents get the same workflow: orient → quality gate → route effort → tools
 | 4 | In-session tools | Media / ops tools (MCP, Imagine, scripts) |
 | 5 | Second Brain | Wiki pages + domain vocabulary |
 
+## Note about myitdev.com
+
+The **live filled wiki** for the myitdev product lives at the **repo root** (`/wiki`, `/CONTEXT.md`, `/AGENTS.md`).  
+That brain is **product-scoped only**. This folder is only the **blank kit** to copy into other projects. Do not merge other domains into myitdev's root wiki.
+
 ## Install into a new project
 
 ### Option A — whole repo is one domain

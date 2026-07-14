@@ -24,11 +24,12 @@ Owner intent: keep these five habits on for every serious session.
 - OpenArt: no MCP yet; Imagine is the substitute.
 - See `.grok/rules/media.md`.
 
-## 5. Wiki first
+## 5. Wiki first (myitdev only)
 
-- Search `wiki/` + `CONTEXT.md` before re-asking durable context.
-- Write back durable decisions in under 10 bullets.
-- Grok `[memory] enabled = true` (user + repo) is extra recall; **wiki stays source of truth**.
+- Search `wiki/` + `CONTEXT.md` before re-asking durable **product** context.
+- Write back durable myitdev decisions in under 10 bullets (`wiki/scope.md`).
+- Grok memory is extra recall; **this wiki stays source of truth for myitdev**.
+- Other domains get their own folder/repo + domain template, not pages here.
 
 ## End of session (optional but useful)
 
